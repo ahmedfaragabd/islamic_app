@@ -1,7 +1,14 @@
 {
-  "islami": "إسلامي",
-  "language": "اللغة",
-  "theme": "النمط"
-
-
+  "islami" : "إسلامي",
+  "language" : "اللغة",
+  "theme" : "النمط",
+  "quran" : "قرآن",
+  "hadeth" : "حديث",
+  "radio" : "راديو",
+  "sebha" : "سبحه",
+  "settings" : "الإعدادات",
+  "chaptetitle": "اسم السورة",
+  "chapternumber": "رقم السورة",
+  "numberOfPraises": "عدد التسبيحات",
+  "quranRadio":  "إذاعـة الـقـرآن الـكـريـم"
 }
