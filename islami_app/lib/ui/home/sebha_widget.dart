@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islamic_app/style/app_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SebhaWidget extends StatefulWidget {
   const SebhaWidget({super.key});
@@ -27,14 +29,14 @@ class _SebhaWidgetState extends State<SebhaWidget> {
           children: [
             Padding(
               padding: EdgeInsets.only(top: mediaQuery.height * .08),
-              child: Image.asset("assets/images/head_of_seb7a.png"),
+              child: Image.asset("assets/images/head_of_seb7a.png",width: 100,height: 100,),
             ),
             Padding(
               padding: EdgeInsets.only(top: mediaQuery.height * 0.17),
               child: Transform.rotate(
 
                   angle: angle,
-                  child: Image.asset("assets/images/body_of_seb7a.png",)),
+                  child: Image.asset("assets/images/body_of_seb7a.png",width: 200,height: 200,)),
             ),
           ],
         ),
@@ -42,7 +44,7 @@ class _SebhaWidgetState extends State<SebhaWidget> {
           height: 28,
         ),
         Text(
-          "عدد التسبيحات",
+          AppLocalizations.of(context)!.numberOfPraises,
           style: Theme
               .of(context)
               .textTheme

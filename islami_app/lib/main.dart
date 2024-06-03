@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         Locale('en'),
         Locale('ar'),
       ],
-      locale: Locale("en"),
+      locale: Locale("ar"),
       title: 'Flutter Demo',
       theme: AppTheme.LightTheme,
       darkTheme: AppTheme.DarkTheme,

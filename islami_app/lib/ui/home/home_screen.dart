@@ -53,20 +53,20 @@ class _HomeScreenState extends State<HomeScreen> {
           items: [
             BottomNavigationBarItem(
                 backgroundColor: Theme.of(context).primaryColor,
-                icon: ImageIcon(AssetImage("assets/images/quran_icn.png")),
-                label: "Quran"),
+                icon: ImageIcon(AssetImage("assets/images/quran_icn.png"),),
+                label:AppLocalizations.of(context)!.quran),
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/hadeth_icn.png")),
-                label: "Hadeth"),
+                label: AppLocalizations.of(context)!.hadeth),
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/radio_icn.png")),
-                label: "Radio"),
+                label: AppLocalizations.of(context)!.radio),
             BottomNavigationBarItem(
               icon: ImageIcon(AssetImage("assets/images/sebha_icn.png")),
-              label: "Sebha",
+              label: AppLocalizations.of(context)!.sebha,
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: "Settings"),
+                icon: Icon(Icons.settings), label: AppLocalizations.of(context)!.settings),
           ],
         ),
         body: navWidget[currentNavIndex],
