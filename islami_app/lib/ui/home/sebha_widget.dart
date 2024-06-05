@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islamic_app/style/app_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/settings_provider.dart';
 
 class SebhaWidget extends StatefulWidget {
   const SebhaWidget({super.key});
@@ -16,9 +20,9 @@ class _SebhaWidgetState extends State<SebhaWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery
-        .of(context)
-        .size;
+    var mediaQuery = MediaQuery.of(context).size;
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
+
     return Container(
       width: double.infinity,
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -27,14 +31,21 @@ class _SebhaWidgetState extends State<SebhaWidget> {
           children: [
             Padding(
               padding: EdgeInsets.only(top: mediaQuery.height * .08),
-              child: Image.asset("assets/images/head_of_seb7a.png"),
+              child: Image.asset(
+                "assets/images/head_of_seb7a.png",
+                width: 100,
+                height: 100,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: mediaQuery.height * 0.17),
               child: Transform.rotate(
-
                   angle: angle,
-                  child: Image.asset("assets/images/body_of_seb7a.png",)),
+                  child: Image.asset(
+                    "assets/images/body_of_seb7a.png",
+                    width: 200,
+                    height: 200,
+                  )),
             ),
           ],
         ),
@@ -42,11 +53,8 @@ class _SebhaWidgetState extends State<SebhaWidget> {
           height: 28,
         ),
         Text(
-          "عدد التسبيحات",
-          style: Theme
-              .of(context)
-              .textTheme
-              .bodyLarge,
+          AppLocalizations.of(context)!.numberOfPraises,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         const SizedBox(
           height: 18,
@@ -55,38 +63,26 @@ class _SebhaWidgetState extends State<SebhaWidget> {
           padding: const EdgeInsets.all(25),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: AppTheme.isDark
-                ? Theme
-                .of(context)
-                .primaryColorDark
-                : Theme
-                .of(context)
-                .primaryColor,
+            color: provider.theme == ThemeMode.dark
+                ? Theme.of(context).primaryColorDark
+                : Theme.of(context).primaryColor,
           ),
           child: Text(
             "$counter",
-            style: Theme
-                .of(context)
-                .textTheme
-                .bodySmall,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
         const SizedBox(
           height: 20,
         ),
-
         MaterialButton(
           height: 80,
           minWidth: 170,
           shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          color: AppTheme.isDark
-              ? Theme
-              .of(context)
-              .dividerColor
-              : Theme
-              .of(context)
-              .primaryColor,
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          color: provider.theme == ThemeMode.dark
+              ? Theme.of(context).dividerColor
+              : Theme.of(context).primaryColor,
           onPressed: () {
             sebha();
           },

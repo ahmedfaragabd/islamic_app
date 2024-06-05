@@ -1,12 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islamic_app/style/app_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/settings_provider.dart';
 
 class RadioWidget extends StatelessWidget {
   const RadioWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
+
     return Column(children: [
       Center(
         child: Padding(
@@ -17,7 +23,7 @@ class RadioWidget extends StatelessWidget {
       SizedBox(height: 50),
       Center(
           child: Text(
-        "إذاعـة الـقـرآن الـكـريـم ",
+        AppLocalizations.of(context)!.quranRadio,
         style: TextStyle(
             fontSize: 24,
             fontFamily: "El Messiri",
@@ -30,21 +36,21 @@ class RadioWidget extends StatelessWidget {
           Icon(
             Icons.skip_previous_rounded,
             size: 28,
-            color: AppTheme.isDark
+            color: provider.theme == ThemeMode.dark
                 ? AppTheme.darkSecondary
                 : AppTheme.lightPrimary,
           ),
           Icon(
             Icons.play_circle_filled_rounded,
             size: 35,
-            color: AppTheme.isDark
+            color: provider.theme == ThemeMode.dark
                 ? AppTheme.darkSecondary
                 : AppTheme.lightPrimary,
           ),
           Icon(
             Icons.skip_next_rounded,
             size: 28,
-            color: AppTheme.isDark
+            color: provider.theme == ThemeMode.dark
                 ? AppTheme.darkSecondary
                 : AppTheme.lightPrimary,
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islamic_app/style/app_theme.dart';
+import 'package:islamic_app/providers/settings_provider.dart';
 import 'package:islamic_app/ui/quran_details/quran_details_screen.dart';
+import 'package:provider/provider.dart';
 
 class QuranTitleWidget extends StatelessWidget {
   String title;
@@ -15,6 +16,7 @@ class QuranTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, QuranDetailsScreen.routeName,
@@ -30,7 +32,7 @@ class QuranTitleWidget extends StatelessWidget {
           Container(
             width: 1.5,
             height: 35,
-            color: AppTheme.isDark
+            color: provider.theme == ThemeMode.dark
                 ? Theme.of(context).dividerColor
                 : Theme.of(context).primaryColor,
           ),

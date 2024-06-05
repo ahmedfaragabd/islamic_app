@@ -1,5 +1,15 @@
 {
-  "islami": "Islami",
-  "language": "Language",
-  "theme": "Theme"
+  "islami" : "Islami",
+  "language" : "Language",
+  "theme" : "Theme",
+  "quran" : "Quran",
+  "hadeth" : "Hadeth",
+  "radio" : "Radio",
+  "sebha" : "Sebha",
+  "settings" : "Settings",
+  "chaptetitle": "chapter title ",
+  "chapternumber": "chapter number",
+  "numberOfPraises": "Number of Praises",
+  "quranRadio":  "Holy Quran Radio"
+
 }
