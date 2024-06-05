@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islamic_app/ui/home/hadeth_widget.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/settings_provider.dart';
 import '../../style/app_theme.dart';
 
 class HadethDetailsScreen extends StatelessWidget {
@@ -13,11 +15,12 @@ class HadethDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     HadethModel hadethModel =
         ModalRoute.of(context)?.settings.arguments as HadethModel;
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(AppTheme.isDark
-                  ? "assets/images/main_dark.jpg"
+              image: AssetImage(provider.theme == ThemeMode.dark
+                  ? "assets/images/dark_background.png"
                   : "assets/images/main_background.png"),
               fit: BoxFit.fill)),
       child: Scaffold(
@@ -32,7 +35,7 @@ class HadethDetailsScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
-                  color: AppTheme.isDark
+                  color: provider.theme == ThemeMode.dark
                       ? Theme.of(context).primaryColorDark
                       : Colors.white,
                   margin: EdgeInsets.all(20),

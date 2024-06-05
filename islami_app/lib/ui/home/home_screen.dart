@@ -6,7 +6,9 @@ import 'package:islamic_app/ui/home/radio_widget.dart';
 import 'package:islamic_app/ui/home/sebha_widget.dart';
 import 'package:islamic_app/ui/home/settings_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/settings_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = "HomeScreen";
@@ -29,11 +31,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(AppTheme.isDark
-              ? "assets/images/main_dark.jpg"
+          image: AssetImage(provider.theme == ThemeMode.dark
+              ? "assets/images/dark_background.png"
               : "assets/images/main_background.png"),
           fit: BoxFit.cover,
         ),
@@ -53,8 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
           items: [
             BottomNavigationBarItem(
                 backgroundColor: Theme.of(context).primaryColor,
-                icon: ImageIcon(AssetImage("assets/images/quran_icn.png"),),
-                label:AppLocalizations.of(context)!.quran),
+                icon: ImageIcon(
+                  AssetImage("assets/images/quran_icn.png"),
+                ),
+                label: AppLocalizations.of(context)!.quran),
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/hadeth_icn.png")),
                 label: AppLocalizations.of(context)!.hadeth),
@@ -66,7 +71,8 @@ class _HomeScreenState extends State<HomeScreen> {
               label: AppLocalizations.of(context)!.sebha,
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: AppLocalizations.of(context)!.settings),
+                icon: Icon(Icons.settings),
+                label: AppLocalizations.of(context)!.settings),
           ],
         ),
         body: navWidget[currentNavIndex],
